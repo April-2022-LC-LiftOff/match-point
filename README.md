@@ -30,6 +30,5 @@ If you have games you want to play with others, you can also build your own boar
 - Google API Map situation
 - How to do a calendar for the scheduler
 
-
-
-### [Project Tracker](https://trello.com/invite/b/vhiulwT5/d8f996dfb2d9a79bc25ee1a6f27d3b0d/matchpoint)
+## Project Tracker:
+[Trello](https://trello.com/invite/b/vhiulwT5/d8f996dfb2d9a79bc25ee1a6f27d3b0d/matchpoint)
