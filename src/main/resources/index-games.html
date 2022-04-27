@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>Games</title>
+</head>
+<body>
+
+<div>
+    //Im not sure if the line of code below does what I want it to do in this application
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    //the class below might need to be created in the future. I'm not sure if it's a standard class.
+    <h2 class = "centered">View All Games</h2>
+</div>
+
+//this class below might also need to be created or customized.
+<div class="container body-content">
+    //Im not sure if the line of code below does what I want it to do in this application
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+//class to be created later
+    <table class="game-listings">
+        <tr th:each="game : ${games}">
+            <td>
+                <p> th:text="${game.id}"> </p>
+                <p th:text="${'Name: ' + game.name}"></p>
+                <p>
+                    Employer:
+                    < th:text="${job.employer.name}"></a>
+                </p>
+                <p>
+                    Skills:
+                <ul th:each="skill : ${job.skills}">
+                    <li>
+                        <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+                    </li>
+                </ul>
+                </p>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+</body>
+</html>
