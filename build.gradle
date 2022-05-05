@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.6'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+//	id 'com.fasterxml.jackson.core-jackson-databind' version '2.0.1'
 }
 
 group = 'org.lauchcode'
@@ -12,7 +13,20 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	jacksonVersion = '2.11.0'
+}
+
 dependencies {
+	constraints {
+		implementation("com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion") {
+			because 'use the same version for all jackson packages'
+		}
+		implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion") {
+			because 'use the same version for all jackson packages'
+		}
+	}
+	implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-crypto'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
