@@ -1,4 +1,7 @@
 package org.lauchcode.matchpoint.models;
 
-public class MinPlayers {
+public class MinPlayers extends GameField{
+    public MinPlayers(String value) {
+        super(value);
+    }
 }

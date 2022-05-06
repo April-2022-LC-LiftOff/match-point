@@ -10,12 +10,12 @@ public class GameData {
     private static boolean isDataLoaded = false;
 
     private static ArrayList<Game> allGames;
-    private static ArrayList<GameName> allGameName = new ArrayList<>();
+    private static ArrayList<GameName> allGameNames = new ArrayList<>();
     private static ArrayList<MinPlayers> allMinPlayers = new ArrayList<>();
     private static ArrayList<MaxPlayers> allMaxPlayers = new ArrayList<>();
     private static ArrayList<GameGenre> allGameGenres = new ArrayList<>();
     private static ArrayList<GameLengthInMinutes> allGameLengthInMinutes = new ArrayList<>();
-}
+
 
     /*
      * Fetch list of all job objects from loaded data,
@@ -57,7 +57,7 @@ public class GameData {
             games = findByValue(value);
             return games;
         }
-        for (Game Game : allGames) {
+        for (Game game : allGames) {
 
             String aValue = getFieldValue(game, column);
 
@@ -131,17 +131,67 @@ public static ArrayList<Game> findByValue(String value) {
      * Read in data from a JSON file and store it in an ArrayList of Game objects.
      */
     private static void loadData() {
-
+        ObjectMapper mapper = new ObjectMapper();
         // Only load data once
         if (isDataLoaded) {
             return;
         }
 
         try {
-            Game game = mapper.readValue(new File("src/main/resources/TestGameDataFile.json"), Game.class);
-
+            Game newGame = mapper.readValue(new File("src/main/resources/TestGameDataFile.json"), Game.class);
+            allGames.add(newGame);
+            // flag the data as loaded, so we don't do it twice
+            isDataLoaded = true;
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static ArrayList<Game> getAllGames() {
+        return allGames;
+    }
+
+    public static void setAllGames(ArrayList<Game> allGames) {
+        GameData.allGames = allGames;
+    }
+
+    public static ArrayList<GameName> getAllGameNames() {
+        return allGameNames;
+    }
+
+    public static void setAllGameNames(ArrayList<GameName> allGameNames) {
+        GameData.allGameNames = allGameNames;
+    }
+
+    public static ArrayList<MinPlayers> getAllMinPlayers() {
+        return allMinPlayers;
+    }
+
+    public static void setAllMinPlayers(ArrayList<MinPlayers> allMinPlayers) {
+        GameData.allMinPlayers = allMinPlayers;
+    }
+
+    public static ArrayList<MaxPlayers> getAllMaxPlayers() {
+        return allMaxPlayers;
+    }
+
+    public static void setAllMaxPlayers(ArrayList<MaxPlayers> allMaxPlayers) {
+        GameData.allMaxPlayers = allMaxPlayers;
+    }
+
+    public static ArrayList<GameGenre> getAllGameGenres() {
+        return allGameGenres;
+    }
+
+    public static void setAllGameGenres(ArrayList<GameGenre> allGameGenres) {
+        GameData.allGameGenres = allGameGenres;
+    }
+
+    public static ArrayList<GameLengthInMinutes> getAllGameLengthInMinutes() {
+        return allGameLengthInMinutes;
+    }
+
+    public static void setAllGameLengthInMinutes(ArrayList<GameLengthInMinutes> allGameLengthInMinutes) {
+        GameData.allGameLengthInMinutes = allGameLengthInMinutes;
     }
 }
