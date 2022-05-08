@@ -10,6 +10,7 @@ import java.time.LocalTime;
 
 public class Event {
 
+    int id;
     String firstName;
     String lastName;
 
@@ -29,12 +30,21 @@ public class Event {
     @DateTimeFormat
     public java.time.LocalDateTime eventTime;
 
-    public Event(String firstName, String lastName, String eventName, String location, LocalDateTime eventTime) {
+    public Event(int id, String firstName, String lastName, String eventName, String location, LocalDateTime eventTime) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.eventName = eventName;
         this.location = location;
         this.eventTime = eventTime;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFirstName() {
