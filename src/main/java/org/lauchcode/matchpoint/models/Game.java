@@ -4,14 +4,14 @@ import java.util.Objects;
 
 public class Game {
 
-    private int gameId=1;
-    private static int nextId = 1;
-    private String gameName="Monopoly";
-    private String gameDescription="Monopoly is a real-estate board game. The player's goal is to remain financially solvent while forcing opponents into bankruptcy by buying and developing pieces of property. Bankruptcy results in elimination from the game. The last player remaining on the board is the winner.";
-    private int minPlayers=2;
-    private int maxPlayers=8;
-    private String gameGenre="Family";
-    private int gameLengthInMinutes=60-90;
+    private Integer gameId;
+    private static Integer nextId=1;
+    private String gameName;
+    private String gameDescription;
+    private Integer minPlayers;
+    private Integer maxPlayers;
+    private String gameGenre;
+    private int gameLengthInMinutes;
 
     // Initialize a unique ID.
     public Game() {
@@ -83,7 +83,7 @@ public class Game {
 
 
 
-    public int getGame_id() {
+    public Integer getGame_id() {
         return gameId;
     }
 
@@ -103,7 +103,7 @@ public class Game {
         this.gameDescription = gameDescription;
     }
 
-    public int getMinPlayers() {
+    public Integer getMinPlayers() {
         return minPlayers;
     }
 
@@ -111,7 +111,7 @@ public class Game {
         this.minPlayers = minPlayers;
     }
 
-    public int getMaxPlayers() {
+    public Integer getMaxPlayers() {
         return maxPlayers;
     }
 
@@ -127,7 +127,7 @@ public class Game {
         this.gameGenre = gameGenre;
     }
 
-    public int getGameLengthInMinutes() {
+    public Integer getGameLengthInMinutes() {
         return gameLengthInMinutes;
     }
 

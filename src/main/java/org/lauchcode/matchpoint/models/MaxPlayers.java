@@ -1,7 +1,7 @@
 package org.lauchcode.matchpoint.models;
 
-public class MaxPlayers extends GameField {
-    public MaxPlayers(String value) {
+public class MaxPlayers extends GameFieldInteger {
+    public MaxPlayers(Integer value) {
         super(value);
     }
 }
