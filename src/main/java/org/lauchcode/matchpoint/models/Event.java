@@ -20,7 +20,7 @@ public class Event {
     private int id;
 
     @NotNull
-    @Size(min = 1, max = 50, message = "Event name must be between 1 and 50 characters long")
+    @Size(min = 1, max = 100, message = "Event name must be between 1 and 100 characters long")
     private String eventName;
 
     @NotNull
@@ -28,12 +28,10 @@ public class Event {
     private String eventLocation;
 
     @NotNull
-    @DateTimeFormat
-    private java.time.LocalDateTime eventDate;
+    private String eventDate;
 
 
-    public Event(int id, String eventName, String eventLocation, LocalDateTime eventDate) {
-        this.id = id;
+    public Event(String eventName, String eventLocation, String eventDate) {
         this.eventName = eventName;
         this.eventLocation = eventLocation;
         this.eventDate = eventDate;
@@ -53,12 +51,20 @@ public class Event {
         this.eventName = eventName;
     }
 
-    public String getLocation() {
+    public String getEventLocation() {
         return eventLocation;
     }
 
-    public void setLocation(String eventLocation) {
+    public void setEventLocation(String eventLocation) {
         this.eventLocation = eventLocation;
+    }
+
+    public String getEventDate() {
+        return eventDate;
+    }
+
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
     @Override

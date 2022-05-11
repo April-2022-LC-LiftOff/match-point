@@ -1,49 +1,89 @@
 package org.lauchcode.matchpoint.controllers;
 
 import org.lauchcode.matchpoint.models.Event;
+import org.lauchcode.matchpoint.models.User;
 import org.lauchcode.matchpoint.models.data.EventRepository;
+import org.lauchcode.matchpoint.models.dto.EventFormDTO;
+import org.lauchcode.matchpoint.models.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
-@RequestMapping("events")
+//@RequestMapping("events")
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
 
-    @GetMapping
+    @GetMapping("/events/create")
+    @ResponseBody
+    public String displayEventForm(){
+        return "<html>" +
+                "<body>" +
+                "<h1>Create an Event</h1>" +
+                "<form action='/events/create' method='post'>" +
+                "<label> Event Name <input type='text' name='eventName' > </label>" +
+                "<label> Event Location <input type='text' name='eventLocation' > </label>" +                "<label> Event Day <input type='text' name='eventDate' > </label>" +
+                "<input type='submit' value='Submit' >" +
+                "</form>" +
+                "</body>" +
+                "</html>";
+    }
+
+    @PostMapping("/events/create")
+    @ResponseBody
+    public String processEventForm(@ModelAttribute EventFormDTO eventFormDTO, HttpServletRequest request){
+
+        Event newEvent = new Event(eventFormDTO.getEventName(), eventFormDTO.getEventLocation(), eventFormDTO.getEventDate());
+        eventRepository.save(newEvent);
+
+        return "Event " + newEvent.getEventName() + " successfully created!";
+    }
+
+
+    @GetMapping("/events")
+    @ResponseBody
     public String displayAllEvents(Model model) {
         model.addAttribute("title", "All Events");
         model.addAttribute("events", eventRepository.findAll());
-        return "events";
+        ArrayList<Event> events = (ArrayList<Event>) eventRepository.findAll();
+        return "<html>" +
+                "<body>" +
+                "<h1> All Events </h1>" +
+                events +
+                "</body>" +
+                "</html>"
+                ;
     }
 
-    @GetMapping("create")
-    public String displayCreateEventForm(Model model) {
-        model.addAttribute("title", "Create Event");
-        model.addAttribute(new Event());
-        return "events/create";
-    }
+//    @GetMapping("create")
+//    public String displayCreateEventForm(Model model) {
+//        model.addAttribute("title", "Create Event");
+//        model.addAttribute(new Event());
+//        return "events/create";
+//    }
 
-    @PostMapping("create")
-    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent,
-                                         Errors errors, Model model) {
-        if(errors.hasErrors()) {
-            model.addAttribute("title", "Create Event");
-            return "events/create";
-        }
-
-        eventRepository.save(newEvent);
-        return "redirect:";
-    }
+//    @PostMapping("create")
+//    public String processCreateEventForm(@ModelAttribute @Valid Event newEvent,
+//                                         Errors errors, Model model) {
+//        if(errors.hasErrors()) {
+//            model.addAttribute("title", "Create Event");
+//            return "events/create";
+//        }
+//
+//        eventRepository.save(newEvent);
+//        return "redirect:";
+//    }
 
     @GetMapping("delete")
     public String displayDeleteEventForm(Model model) {

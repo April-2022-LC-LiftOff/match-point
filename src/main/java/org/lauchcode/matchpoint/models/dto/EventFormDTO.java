@@ -8,7 +8,7 @@ public class EventFormDTO {
 
     private String eventLocation;
 
-    private java.time.LocalDateTime eventDate;
+    private String eventDate;
 
     public String getEventName() {
         return eventName;
@@ -26,11 +26,11 @@ public class EventFormDTO {
         this.eventLocation = eventLocation;
     }
 
-    public LocalDateTime getEventDate() {
+    public String getEventDate() {
         return eventDate;
     }
 
-    public void setEventDate(LocalDateTime eventDate) {
+    public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
     }
 }
