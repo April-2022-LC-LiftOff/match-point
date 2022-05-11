@@ -2,65 +2,47 @@ package org.lauchcode.matchpoint.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Objects;
 
+@Entity
 public class Event {
 
-    int id;
-    String firstName;
-    String lastName;
+    @Id
+    @GeneratedValue
+    private int id;
 
     @NotNull
-    @Size(min = 1, max = 20, message = "Event name must be between 1 and 20 characters long")
-    public String eventName;
+    @Size(min = 1, max = 50, message = "Event name must be between 1 and 50 characters long")
+    private String eventName;
 
     @NotNull
     @Size(min = 1, max = 100, message = "Location must be between 1 and 100 characters long")
-    public String location;
+    private String eventLocation;
 
     @NotNull
     @DateTimeFormat
-    public java.time.LocalDateTime eventDate;
+    private java.time.LocalDateTime eventDate;
 
-    @NotNull
-    @DateTimeFormat
-    public java.time.LocalDateTime eventTime;
 
-    public Event(int id, String firstName, String lastName, String eventName, String location, LocalDateTime eventTime) {
+    public Event(int id, String eventName, String eventLocation, LocalDateTime eventDate) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
         this.eventName = eventName;
-        this.location = location;
-        this.eventTime = eventTime;
+        this.eventLocation = eventLocation;
+        this.eventDate = eventDate;
     }
+
+    public Event() {}
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEventName() {
@@ -72,18 +54,24 @@ public class Event {
     }
 
     public String getLocation() {
-        return location;
+        return eventLocation;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setLocation(String eventLocation) {
+        this.eventLocation = eventLocation;
     }
 
-    public LocalDateTime getEventTime() {
-        return eventTime;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return id == event.id;
     }
 
-    public void setEventTime(LocalDateTime eventTime) {
-        this.eventTime = eventTime;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
+
 }
