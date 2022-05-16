@@ -1,8 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <h1>{{title}}</h1>
-<p>Hello {{user}}</p>
-<nav>
-  <a routerLink="/sign-up">Sign Up</a>
+<p>Hello {{userInSession}}</p>
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <ul class="navbar-nav">
+    <li class="nav-item"><a class="nav-link" routerLink="/sign-up">Sign Up</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/games">Games</a></li>
+    <li class="nav-item"><a class="nav-link" routerLink="/events">Events</a></li>
+  </ul>
+  
+  
+  
 </nav>
 
 <router-outlet></router-outlet>

@@ -1,5 +1,5 @@
 <h2>{{title}}</h2>
-<div class="container">
+<div class="container col-sm-4 border py-2">
     <form #signupForm="ngForm" (ngSubmit)="registerUser()">
       {{ model | json }}
       <div class="form-group">
@@ -11,11 +11,11 @@
 
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="text"  class="form-control" id="password"
+        <input type="password"  class="form-control" id="password"
                [(ngModel)]="model.password" name="password">
       </div>
 
-      <button type="submit" class="btn btn-success">Submit</button>
+      <button class="btn" type="submit" class="btn btn-success">Submit</button>
 
     </form>
 </div>

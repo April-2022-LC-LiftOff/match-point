@@ -30,12 +30,14 @@ public class AuthenticationController {
 
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         if (userId == null){
-            return null;
+//            return null;
+            return new User("No ID", "No ID");
         }
 
         Optional<User> user = userRepository.findById(userId);
         if (user.isEmpty()){
-            return null;
+//            return null;
+            return new User("User not found", "User Not Found");
         }
 
         return user.get();
@@ -46,10 +48,17 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
+//    @GetMapping("/user")
+//    public ResponseEntity<User> getCurrentUser(HttpServletRequest request){
+//        User currentUser = getUserFromSession(request.getSession());
+//        return new ResponseEntity<>(currentUser, HttpStatus.OK);
+//    }
+
     @GetMapping("/user")
-    public ResponseEntity<User> getCurrentUser(HttpServletRequest request){
-        User currentUser = getUserFromSession(request.getSession());
-        return new ResponseEntity<User>(currentUser, HttpStatus.FOUND);
+    @ResponseBody
+    public String getCurrentUser(HttpServletRequest request){
+        User currentUser = getUserFromSession((request.getSession()));
+        return currentUser.toString();
     }
 
     @GetMapping("/register")
@@ -111,20 +120,11 @@ public class AuthenticationController {
     }
 
 
-//    @GetMapping("/login")
-//    @ResponseBody
-//    public String displayLoginForm(){
-//        return "<html>" +
-//                "<body>" +
-//                "<h1>User Login</h1>" +
-//                "<form action = '/login' method = 'post'>" +
-//                "<label> Username <input type='text' name='username' > </label>" +
-//                "<label> Password <input type='password' name='password' > </label>" +
-//                "<input type='submit' value='Log In' >" +
-//                "</form>" +
-//                "</body>" +
-//                "</html>";
-//    }
+    @GetMapping("/login")
+    @ResponseBody
+    public String displayLoginForm(){
+        return "login";
+    }
 
 //    @PostMapping("/login")
 //    @ResponseBody
