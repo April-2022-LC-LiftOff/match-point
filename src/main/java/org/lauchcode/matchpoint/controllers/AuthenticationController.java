@@ -98,7 +98,7 @@ public class AuthenticationController {
 
     @PostMapping("/login")
     @ResponseBody
-    public String processLoginOFrm(@ModelAttribute LoginFormDTO loginFormDTO, HttpServletRequest request){
+    public String processLoginForm(@ModelAttribute LoginFormDTO loginFormDTO, HttpServletRequest request){
 
         User aUser = userRepository.findByUsername(loginFormDTO.getUsername());
         if(aUser == null){
