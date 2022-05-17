@@ -8,13 +8,15 @@ import { SignupComponent } from './signup/signup.component';
 import { FormsModule } from '@angular/forms';
 import { GamesComponent } from './games/games.component';
 import { EventsComponent } from './events/events.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SignupComponent,
     GamesComponent,
-    EventsComponent
+    EventsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
