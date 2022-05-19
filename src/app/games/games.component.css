@@ -1,0 +1,26 @@
+div {
+    padding-top: 50px;
+    padding-right: 30px;
+    padding-bottom: 50px;
+    padding-left: 80px;
+  }
+
+  table {
+    border-collapse: collapse;
+    /* border: 3px solid; */
+  }
+
+  th {
+    background-color: rgb(237, 110, 220);
+    color: white;
+    text-align: center;
+    border-bottom: 5px solid black;
+    /* border: 1px solid; */
+  }
+
+  td {
+    text-align: center;
+    border: 1px solid;
+  }
+  tr:hover {background-color: rgb(237, 192, 110);}
+  /* tr:nth-child(even) {background-color: #f2f2f2;} */

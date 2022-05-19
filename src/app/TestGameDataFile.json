@@ -1,0 +1,47 @@
+   [
+      {
+        "game_id": "1",
+        "game_name": "Catan",
+        "game_descrip": "The women and men of your expedition build the first two settlements. Fortunately, the land is rich in natural resources. You build roads and new settlements that eventually become cities. Will you succeed in gaining supremacy on Catan? Barter trade dominates the scene. Some resources you have in abundance, other resources are scarce. Ore for wool, brick for lumber - you trade according to what is needed for your current building projects. Proceed strategically! If you found your settlements in the right places and skillfully trade your resources, then the odds will be in your favor. But your opponents are smart too.",
+        "min_players": "3",
+        "max_players": "4",
+        "game_genre": "Dice, Economic, Family Game, Negotiation",
+        "game_length": "45-90 min"
+      },
+      {
+        "game_id": "2",
+        "game_name": "Pandemic",
+        "game_descrip": "In Pandemic, several virulent diseases have broken out simultaneously all over the world! The players are disease-fighting specialists whose mission is to treat disease hotspots while researching cures for each of four plagues before they get out of hand. The game board depicts several major population centers on Earth. On each turn, a player can use up to four actions to travel between cities, treat infected populaces, discover a cure, or build a research station. A deck of cards provides the players with these abilities, but sprinkled throughout this deck are Epidemic! cards that accelerate and intensify the diseases' activity. A second, separate deck of cards controls the 'normal' spread of the infections. Taking a unique role within the team, players must plan their strategy to mesh with their specialists' strengths in order to conquer the diseases. For example, the Operations Expert can build research stations which are needed to find cures for the diseases and which allow for greater mobility between cities; the Scientist needs only four cards of a particular disease to cure it instead of the normal five—but the diseases are spreading quickly and time is running out. If one or more diseases spreads beyond recovery or if too much time elapses, the players all lose. If they cure the four diseases, they all win!",
+        "min_players": "2",
+        "max_players": "4",
+        "game_genre": "Medical",
+        "game_length": "45-60 min"
+      },
+      {
+        "game_id": "3",
+        "game_name": "Kingdom Death: Monster",
+        "game_descrip": "Kingdom Death: Monster is a fully cooperative, tabletop, hobby game experience. Unite to survive by hunting monsters and collectively guiding the development of your settlement through a 30 year, self-running campaign. Every decision matters. A space moved during the showdown, every resource spent to craft a piece of gear, what principles your settlement upholds - all can have lasting impact on this highly replayable and challenging game.",
+        "min_players": "1",
+        "max_players": "4",
+        "game_genre": "Adventure, Fantasy, Horror, Mature/Adult, Miniatures, Mythology",
+        "game_length": "60-180 min"
+      },
+      {
+        "game_id": "4",
+        "game_name": "Dominion",
+        "game_descrip": "You are a monarch, like your parents before you, a ruler of a small pleasant kingdom of rivers and evergreens. Unlike your parents, however, you have hopes and dreams! You want a bigger and more pleasant kingdom, with more rivers and a wider variety of trees. You want a Dominion! In all directions lie fiefs, freeholds, and feodums. All are small bits of land, controlled by petty lords and verging on anarchy. You will bring civilization to these people, uniting them under your banner. In Dominion, each player starts with an identical, very small deck of cards. In the center of the table is a selection of other cards the players can 'buy' as they can afford them. Through their selection of cards to buy, and how they play their hands as they draw them, the players construct their deck on the fly, striving for the most efficient path to the precious victory points by game end.",
+        "min_players": "2",
+        "max_players": "4",
+        "game_genre": "Card Game, Medieval",
+        "game_length": "30 min"
+      },
+      {
+        "game_id": "5",
+        "game_name": "Agricola",
+        "game_descrip": "In Agricola (Latin for 'farmer'), you're a farmer in a wooden shack with your spouse and little else. On a turn, you get to take only two actions, one for you and one for the spouse, from all the possibilities you'll find on a farm: collecting clay, wood or stone; building fences; and so on. You might think about having kids in order to get more work accomplished, but first you need to expand your house. And what are you going to feed all the little rugrats? Agricola is a turn-based game. There are 14 game turns plus 6 harvest phases (after turn 4, 7, 9, 11, 13, and 14). Each player starts with two playing tokens (farmer and wife) and thus can take two actions per turn. There are multiple options, and while the game progresses, you'll have more and more: first thing in a turn, a new action card is flipped over. Problem: Each action can be taken just once per turn, so it's important to do some things with high preference. Each player also starts with a hand of 7 Occupation cards (of more than 160 total) and 7 Minor Improvement cards (of more than 140 total) that he may use during the game if they fit in his/her strategy. This amounts to countless strategies, some depending on your card hand. Sometimes it's a good choice to stay on course, sometimes you better react on what your opponents do.",
+        "min_players": "1",
+        "max_players": "5",
+        "game_genre": "Animals, Economic, Farming",
+        "game_length": "30-60 min"
+      }
+    ]
