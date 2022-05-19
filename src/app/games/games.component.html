@@ -1,0 +1,30 @@
+<div style="text-align:left;width:500px;">
+    <h1>
+        {{ GamePageTitle}}!
+    </h1>
+    <h1>
+        {{title}}
+    </h1>
+
+    <table *ngIf="arrGames">
+        <!-- ADD HEADERS -->
+        <tr>
+            <th>Name</th>
+                <th>Description</th>
+                    <th>Min Players</th>
+                        <th>Max Players</th>
+                            <th>Genre</th>
+                                <th>Play Time</th>
+        </tr>
+
+        <!-- BIND ARRAY TO TABLE -->
+        <tr *ngFor="let game of arrGames">
+            <td>{{game.game_name}}</td>
+                <td>{{game.game_descrip}}</td>
+                    <td>{{game.min_players}}</td>
+                        <td>{{game.max_players}}</td>
+                            <td>{{game.game_genre}}</td>
+                                <td>{{game.game_length}}</td>
+        </tr>
+    </table>
+</div>
