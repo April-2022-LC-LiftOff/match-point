@@ -10,7 +10,7 @@ import { UserAuthService } from './user-auth.service';
 export class AppComponent implements OnInit {
   title = 'MatchPoint';
   userInSession?;
-  // user = this.userInSession || 'Stranger';
+  user = this.userInSession || 'Stranger';
 
   constructor(private auth: UserAuthService){}
   

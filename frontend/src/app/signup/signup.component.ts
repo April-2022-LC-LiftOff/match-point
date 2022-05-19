@@ -19,6 +19,7 @@ export class SignupComponent implements OnInit {
 
   registerUser(){
     this.auth.addUser(this.model).subscribe();
+    this.model = new User();
   }
 
 }
