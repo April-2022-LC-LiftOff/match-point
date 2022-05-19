@@ -26,6 +26,7 @@ dependencies {
 			because 'use the same version for all jackson packages'
 		}
 	}
+	//note
 //	implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.security:spring-security-crypto'
