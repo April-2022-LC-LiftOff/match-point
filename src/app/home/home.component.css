@@ -1,0 +1,14 @@
+/* <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> */
+
+img {
+    /* max-width: 50%; */
+    height: auto;
+}
+
+img.bannerImage{
+    width: 100%
+}
+
+#landing {
+    height: 84vh;
+}
