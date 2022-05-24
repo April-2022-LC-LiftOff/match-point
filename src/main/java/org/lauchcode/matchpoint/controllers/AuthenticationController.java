@@ -6,10 +6,7 @@ import org.lauchcode.matchpoint.models.dto.LoginFormDTO;
 import org.lauchcode.matchpoint.models.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,42 +40,43 @@ public class AuthenticationController {
         session.setAttribute(userSessionKey, user.getId());
     }
 
-    @GetMapping("/register")
-    @ResponseBody
-    public String displayRegistrationForm(){
-        return "<html>" +
-                "<body>" +
-                "<h1>User Registration</h1>" +
-                "<form action='/register' method='post'>" +
-                "<label> Username <input type='text' name='username' > </label>" +
-                "<label> Password <input type='password' name='password' > </label>" +
-                "<label> Confirm Password <input type='password' name='verifyPassword' > </label>" +
-                "<input type='submit' value='Register' >" +
-                "</form>" +
-                "</body>" +
-                "</html>";
-    }
+//    @GetMapping("/register")
+//    @ResponseBody
+//    public String displayRegistrationForm(){
+//        return "<html>" +
+//                "<body>" +
+//                "<h1>User Registration</h1>" +
+//                "<form action='/register' method='post'>" +
+//                "<label> Username <input type='text' name='username' > </label>" +
+//                "<label> Password <input type='password' name='password' > </label>" +
+//                "<label> Confirm Password <input type='password' name='verifyPassword' > </label>" +
+//                "<input type='submit' value='Register' >" +
+//                "</form>" +
+//                "</body>" +
+//                "</html>";
+//    }
 
     @PostMapping("/register")
+    @CrossOrigin
     @ResponseBody
-    public String processRegistrationForm(@ModelAttribute RegisterFormDTO registerFormDTO, HttpServletRequest request){
+    public User processRegistrationForm(@RequestBody RegisterFormDTO registerFormDTO, HttpServletRequest request) throws Exception {
 
         User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
         if (existingUser != null){
-            return "A user with that username already exists!";
+            throw new Exception("A user with that username already exists!");
         }
 
         String password = registerFormDTO.getPassword();
         String verifyPassword = registerFormDTO.getVerifyPassword();
         if(!password.equals(verifyPassword)){
-            return "Passwords do not match!";
+            throw new Exception("Passwords do not match!");
         }
 
         User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword());
-        userRepository.save(newUser);
+        User savedUser = userRepository.save(newUser);
         setUserSessionKey(request.getSession(), newUser);
 
-        return "User " + newUser.getUsername() + " successfully created!";
+        return savedUser;
     }
 
     @GetMapping("/login")
