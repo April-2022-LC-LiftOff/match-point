@@ -1,0 +1,12 @@
+/* .navbar-nav li a {
+    color: rgb(100, 204, 247);
+} */
+
+.nav-item.sign-up.navbar-right a {
+    color: rgb(100, 204, 247);
+}
+
+/* .navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: green;
+} */

@@ -1,1 +1,29 @@
-<p>games works!</p>
+<div style="text-align:left;width:1200px;">
+    <h1>
+       
+        {{Title}}
+
+    </h1>
+
+    <table *ngIf="Games">
+        <!-- ADD HEADERS  -->
+        <tr>
+            <th>Name</th>
+                <th>Description</th>
+                    <th>Min Players</th>
+                        <th>Max Players</th>
+                            <th>Genre</th>
+                                 <th>Play Time</th>
+        </tr> 
+
+   
+   <tr *ngFor="let game of Games">
+            <td>{{game.game_name}}</td>
+                <td>{{game.game_descrip}}</td>
+                    <td>{{game.min_players}}</td>
+                        <td>{{game.max_players}}</td>
+                            <td>{{game.game_genre}}</td>
+                                <td>{{game.game_length}}</td> 
+     </tr>
+    </table> 
+</div>
