@@ -4,26 +4,53 @@
         {{Title}}
 
     </h1>
+    
+    <table class="filter"> 
+        <tr class="filter">
+            <td><label for="min_players">Minimum Players:</label></td>
+            <td><input type="number" min = "1" id="min_players" name="min_players" class="input"></td>
+            <td><label for="max_players">Maximum Players:</label></td> 
+            <td><input type="number" min = "1" id="max_players" name="max_players" class="input"></td>
+            <td><label for="min_playtime">Minimum Playtime:</label></td>
+            <td><input type="number" min = "0" id="min_playtime" name="min_playtime" class="input"></td>
+            <td><label for="max_playtime">Maximum Playtime:</label></td>
+            <td><input type="number" min = "0" id="max_playtime" name="max_playtime" class="input"></td>
+            <td><input type="submit" value="Filter"></td>
+        </tr> 
+    </table>
 
-    <table *ngIf="Games">
+    <br>
+
+    <table class = "games" *ngIf="Games">
+        <col style="width:20%">
+	    <col style="width:40%">
+	    <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
         <!-- ADD HEADERS  -->
         <tr>
             <th>Name</th>
-                <th>Description</th>
-                    <th>Min Players</th>
-                        <th>Max Players</th>
-                            <th>Genre</th>
-                                 <th>Play Time</th>
+            <th>Description</th>
+            <th>Min Players</th>
+            <th>Max Players</th>
+            <th>Min Playtime</th>
+            <th>Max Playtime</th>
+            <th>Library</th>
         </tr> 
 
    
    <tr *ngFor="let game of Games">
-            <td>{{game.game_name}}</td>
-                <td>{{game.game_descrip}}</td>
-                    <td>{{game.min_players}}</td>
-                        <td>{{game.max_players}}</td>
-                            <td>{{game.game_genre}}</td>
-                                <td>{{game.game_length}}</td> 
+            <td> <img class = "contain" src = "{{game.images.small}}" width = "200" height="200"> <p>{{game.name}}</p></td>
+            <!-- <td>{{game.name}}</td> -->
+            <td>{{game.description_preview}}</td>
+            <td>{{game.min_players}}</td>
+            <td>{{game.max_players}}</td>
+            <!-- <td>{{game.game_genre}}</td> -->
+            <td>{{game.min_playtime}}</td>
+            <td>{{game.max_playtime}}</td>
+            <td><button type="button">Add to Library</button></td> 
      </tr>
     </table> 
 </div>
