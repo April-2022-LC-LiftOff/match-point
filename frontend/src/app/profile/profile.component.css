@@ -9,3 +9,37 @@
     display: table;
     clear: both;
   }
+
+  .tab { margin-left: 40px; }
+
+ div {
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom:1%;
+    margin-top:1%;
+    }
+
+h4 {
+    margin-left:10px;
+    margin-right:10px;
+    margin: 40px;
+    margin-top:1%;
+    }
+    .button.rounded-corners {
+        background-color: #64CCF7;
+        color: #efefef;
+        border: none;
+        text-align: center;
+        padding: 10px 20px;
+        padding-bottom: 10px;
+        border-radius: 70px;
+        width:200px;
+        height:40px;
+      }
+
+      .button-wrapper .button.rounded-corners {
+        margin-bottom:10px;
+    }
+      /* .rounded-corners {
+        border-radius: 5px;
+      } */
