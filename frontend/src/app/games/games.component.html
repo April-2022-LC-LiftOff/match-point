@@ -1,21 +1,20 @@
 <div style="text-align:left;width:1200px;">
     <h1>
        
-        {{Title}}
+        {{title}}
 
     </h1>
-    
+
     <table class="filter"> 
         <tr class="filter">
             <td><label for="min_players">Minimum Players:</label></td>
-            <td><input type="number" min = "1" id="min_players" name="min_players" class="input"></td>
+            <td><input #minPlayers (click)='true' type="number" min = "1" value="1" class="input"/></td>
             <td><label for="max_players">Maximum Players:</label></td> 
-            <td><input type="number" min = "1" id="max_players" name="max_players" class="input"></td>
+            <td><input #maxPlayers (click)='true' type="number" min="1" value="8" class="input"/></td>
             <td><label for="min_playtime">Minimum Playtime:</label></td>
-            <td><input type="number" min = "0" id="min_playtime" name="min_playtime" class="input"></td>
+            <td><input #minPlaytime (click)='true' type="number" min = "5" value="15" class="input" step="5"/></td>
             <td><label for="max_playtime">Maximum Playtime:</label></td>
-            <td><input type="number" min = "0" id="max_playtime" name="max_playtime" class="input"></td>
-            <td><input type="submit" value="Filter"></td>
+            <td><input #maxPlaytime (click)='true' type="number" min = "5" value="180" class="input" step="5"/></td>
         </tr> 
     </table>
 
@@ -40,8 +39,9 @@
             <th>Library</th>
         </tr> 
 
-   
-   <tr *ngFor="let game of Games">
+    <!-- <ng-container *ngFor="let game of Games"> -->
+        <tr *ngFor="let game of Games">
+        <ng-container *ngIf="game.min_players >= minPlayers.value && game.max_players <= maxPlayers.value && game.min_playtime >= minPlaytime.value && game.max_playtime <= maxPlaytime.value">
             <td> <img class = "contain" src = "{{game.images.small}}" width = "200" height="200"> <p>{{game.name}}</p></td>
             <!-- <td>{{game.name}}</td> -->
             <td>{{game.description_preview}}</td>
@@ -51,6 +51,8 @@
             <td>{{game.min_playtime}}</td>
             <td>{{game.max_playtime}}</td>
             <td><button type="button">Add to Library</button></td> 
-     </tr>
+        </ng-container>    
+        </tr>
+    <!-- </ng-container> -->
     </table> 
 </div>

@@ -8,14 +8,12 @@ import data from '../games.json';
 })
 export class GamesComponent {
   Games: any = data;
-  Title= "View Our Game Database!"
-  constructor() { }
-
-  // ngOnInit() {
-
-  //     console.log(data);
+  title= "View Our Game Database!"
+  min_Players: number;
+  max_Players: number;
+  min_Playtime: number;
+  max_Playtime: number;
   
-    
-  // }
+  constructor() { }
 
 }
