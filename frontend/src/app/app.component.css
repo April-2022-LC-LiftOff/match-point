@@ -10,3 +10,10 @@
 .navbar-custom .navbar-text {
     color: green;
 } */
+
+body, html, header,p,h1,h2,h3,h4, div, table, .row div {
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom:1%;
+    margin-top:1%;
+    }

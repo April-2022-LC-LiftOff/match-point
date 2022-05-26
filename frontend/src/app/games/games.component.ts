@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import data from '../TestGameDataFile.json';
+import data from '../TestGameDataFile.json';
 
 @Component({
   selector: 'app-games',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./games.component.css']
 })
 export class GamesComponent {
-  // Games: any = data;
+  Games: any = data;
   Title= "View Our Game Database!"
   constructor() { }
 
