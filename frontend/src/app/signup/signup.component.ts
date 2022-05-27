@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../user';
-import { UserAuthService } from '../user-auth.service';
+import { Component, OnInit } from "@angular/core";
+import { User } from "../user";
+import { AuthService } from "../_services/auth.service";
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: "app-signup",
+  templateUrl: "./signup.component.html",
+  styleUrls: ["./signup.component.css"],
 })
 export class SignupComponent implements OnInit {
-
-  title: string = 'Sign Up';
+  title: string = "Sign Up";
   model: User = new User();
+  errMsg?: string;
 
-  constructor(private auth: UserAuthService) { }
+  constructor(private authService: AuthService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  registerUser() {
+    this.authService
+      .register(this.model.username, this.model.email, this.model.password)
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.model = new User();
+        },
+        error: (err) => {
+          console.log(err);
+          this.errMsg = err.error.message;
+        },
+      });
   }
-
-  registerUser(){
-    this.auth.addUser(this.model).subscribe();
-    this.model = new User();
-  }
-
 }
