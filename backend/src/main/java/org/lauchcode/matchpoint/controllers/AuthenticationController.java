@@ -17,10 +17,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.HashSet;
@@ -79,17 +81,11 @@ public class AuthenticationController {
         }
         user.setRoles(roles);
         userRepository.save(user);
-        return ResponseEntity.ok(new MessageResponse("User successfully registered!"));
-    }
-
-    @PostMapping("/login")
-    public ResponseEntity<?> processLoginForm(@Valid @RequestBody LoginRequestDTO loginRequestDTO){
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDTO.getUsername(), loginRequestDTO.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(registerFormDTO.getUsername(), registerFormDTO.getPassword()));
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwt(authentication);
-
         UserDetailsImplementation userDetails = (UserDetailsImplementation) authentication.getPrincipal();
-        List<String> roles = userDetails.getAuthorities().stream()
+        List<String> userRoles = userDetails.getAuthorities().stream()
                 .map(item -> item.getAuthority())
                 .collect(Collectors.toList());
         return ResponseEntity.ok(new JwtResponse(
@@ -97,7 +93,25 @@ public class AuthenticationController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles
+                userRoles
+        ));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> processLoginForm(@Valid @RequestBody LoginRequestDTO loginRequestDTO){
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequestDTO.getUsername(), loginRequestDTO.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String jwt = jwtUtils.generateJwt(authentication);
+        UserDetailsImplementation userDetails = (UserDetailsImplementation) authentication.getPrincipal();
+        List<String> userRoles = userDetails.getAuthorities().stream()
+                .map(item -> item.getAuthority())
+                .collect(Collectors.toList());
+        return ResponseEntity.ok(new JwtResponse(
+                jwt,
+                userDetails.getId(),
+                userDetails.getUsername(),
+                userDetails.getEmail(),
+                userRoles
         ));
     }
 

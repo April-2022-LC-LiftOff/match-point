@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "../user";
 import { AuthService } from "../_services/auth.service";
+import { TokenService } from "../_services/token.service";
+const URL = "http://localhost:4200/"
 
 @Component({
   selector: "app-signup",
@@ -10,11 +12,24 @@ import { AuthService } from "../_services/auth.service";
 export class SignupComponent implements OnInit {
   title: string = "Sign Up";
   model: User = new User();
+  isLoggedIn: boolean = false;
   errMsg?: string;
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private tokenService: TokenService
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isLoggedIn = this.tokenService.isLoggedIn();
+    if (this.isLoggedIn){
+      window.location.replace(URL + "profile")
+    }
+  }
+
+  reloadPage(): void {
+    window.location.reload();
+  }
 
   registerUser() {
     this.authService
@@ -22,6 +37,10 @@ export class SignupComponent implements OnInit {
       .subscribe({
         next: (data) => {
           console.log(data);
+          this.tokenService.setToken(data.accessToken);
+          this.tokenService.setUser(data);
+          this.isLoggedIn = true;
+          this.reloadPage();
           this.model = new User();
         },
         error: (err) => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { TokenService } from '../_services/token.service';
+const URL = "http://localhost:4200/"
 
 @Component({
   selector: 'app-login',
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private tokenService: TokenService) { }
 
   ngOnInit(): void {
-    if (this.tokenService.getToken()){
-      this.isLoggedIn = true;
+    this.isLoggedIn = this.tokenService.isLoggedIn();
+    if (this.isLoggedIn){
+      window.location.replace(URL + "profile")
     }
   }
 
