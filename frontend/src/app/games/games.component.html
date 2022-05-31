@@ -1,1 +1,58 @@
-<p>games works!</p>
+<div style="text-align:left;width:1200px;">
+    <h1>
+       
+        {{title}}
+
+    </h1>
+
+    <table class="filter"> 
+        <tr class="filter">
+            <td><label for="min_players">Minimum Players:</label></td>
+            <td><input #minPlayers (click)='true' type="number" min = "1" value="1" class="input"/></td>
+            <td><label for="max_players">Maximum Players:</label></td> 
+            <td><input #maxPlayers (click)='true' type="number" min="1" value="8" class="input"/></td>
+            <td><label for="min_playtime">Minimum Playtime:</label></td>
+            <td><input #minPlaytime (click)='true' type="number" min = "5" value="15" class="input" step="5"/></td>
+            <td><label for="max_playtime">Maximum Playtime:</label></td>
+            <td><input #maxPlaytime (click)='true' type="number" min = "5" value="180" class="input" step="5"/></td>
+        </tr> 
+    </table>
+
+    <br>
+
+    <table class = "games" *ngIf="Games">
+        <col style="width:20%">
+	    <col style="width:40%">
+	    <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <!-- ADD HEADERS  -->
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Min Players</th>
+            <th>Max Players</th>
+            <th>Min Playtime</th>
+            <th>Max Playtime</th>
+            <th>Library</th>
+        </tr> 
+
+    <!-- <ng-container *ngFor="let game of Games"> -->
+        <tr *ngFor="let game of Games">
+        <ng-container *ngIf="game.min_players >= minPlayers.value && game.max_players <= maxPlayers.value && game.min_playtime >= minPlaytime.value && game.max_playtime <= maxPlaytime.value">
+            <td> <img class = "contain" src = "{{game.images.small}}" width = "200" height="200"> <p>{{game.name}}</p></td>
+            <!-- <td>{{game.name}}</td> -->
+            <td>{{game.description_preview}}</td>
+            <td>{{game.min_players}}</td>
+            <td>{{game.max_players}}</td>
+            <!-- <td>{{game.game_genre}}</td> -->
+            <td>{{game.min_playtime}}</td>
+            <td>{{game.max_playtime}}</td>
+            <td><button type="button">Add to Library</button></td> 
+        </ng-container>    
+        </tr>
+    <!-- </ng-container> -->
+    </table> 
+</div>
