@@ -1,0 +1,19 @@
+/* .navbar-nav li a {
+    color: rgb(100, 204, 247);
+} */
+
+.nav-item.sign-up.navbar-right a {
+    color: rgb(100, 204, 247);
+}
+
+/* .navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+    color: green;
+} */
+
+body, html, header,p,h1,h2,h3,h4, div, table, .row div {
+    margin-left:10%;
+    margin-right:10%;
+    margin-bottom:1%;
+    margin-top:1%;
+    }
