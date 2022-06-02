@@ -46,9 +46,9 @@ public class EventController {
 
     @GetMapping("/events")
     @ResponseBody
-    public String displayAllEvents(Model model) {
-        model.addAttribute("title", "All Events");
-        model.addAttribute("events", eventRepository.findAll());
+    public String displayAllEvents() {
+//        model.addAttribute("title", "All Events");
+//        model.addAttribute("events", eventRepository.findAll());
         ArrayList<Event> events = (ArrayList<Event>) eventRepository.findAll();
         return "<html>" +
                 "<body>" +
