@@ -39,20 +39,16 @@
             <th>Library</th>
         </tr> 
 
-    <!-- <ng-container *ngFor="let game of Games"> -->
         <tr *ngFor="let game of Games">
         <ng-container *ngIf="game.min_players >= minPlayers.value && game.max_players <= maxPlayers.value && game.min_playtime >= minPlaytime.value && game.max_playtime <= maxPlaytime.value">
             <td> <img class = "contain" src = "{{game.images.small}}" width = "200" height="200"> <p>{{game.name}}</p></td>
-            <!-- <td>{{game.name}}</td> -->
             <td>{{game.description_preview}}</td>
             <td>{{game.min_players}}</td>
             <td>{{game.max_players}}</td>
-            <!-- <td>{{game.game_genre}}</td> -->
             <td>{{game.min_playtime}}</td>
             <td>{{game.max_playtime}}</td>
             <td><button type="button">Add to Library</button></td> 
         </ng-container>    
         </tr>
-    <!-- </ng-container> -->
     </table> 
 </div>
