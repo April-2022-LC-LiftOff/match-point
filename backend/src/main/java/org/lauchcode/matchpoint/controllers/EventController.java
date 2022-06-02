@@ -4,59 +4,66 @@ import org.lauchcode.matchpoint.models.Event;
 import org.lauchcode.matchpoint.models.data.EventRepository;
 import org.lauchcode.matchpoint.models.dto.EventFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.List;
 
-@Controller
-//@RequestMapping("events")
+@RestController
+@RequestMapping("/api")
 public class EventController {
 
     @Autowired
     private EventRepository eventRepository;
 
-    @GetMapping("/events/create")
-    @ResponseBody
-    public String displayEventForm(){
-        return "<html>" +
-                "<body>" +
-                "<h1>Create an Event</h1>" +
-                "<form action='/events/create' method='post'>" +
-                "<label> Event Name <input type='text' name='eventName' > </label>" +
-                "<label> Event Location <input type='text' name='eventLocation' > </label>" +                "<label> Event Day <input type='text' name='eventDate' > </label>" +
-                "<input type='submit' value='Submit' >" +
-                "</form>" +
-                "</body>" +
-                "</html>";
-    }
+    @Autowired
+    private AuthenticationController authenticationController;
 
-    @PostMapping("/events/create")
+//    @GetMapping("/events/create")
+//    @ResponseBody
+//    public String displayEventForm(){
+//        return "<html>" +
+//                "<body>" +
+//                "<h1>Create an Event</h1>" +
+//                "<form action='/events/create' method='post'>" +
+//                "<label> Event Name <input type='text' name='eventName' > </label>" +
+//                "<label> Event Location <input type='text' name='eventLocation' > </label>" +                "<label> Event Day <input type='text' name='eventDate' > </label>" +
+//                "<input type='submit' value='Submit' >" +
+//                "</form>" +
+//                "</body>" +
+//                "</html>";
+//    }
+
+//    @PostMapping("/events/create")
+//    @ResponseBody
+//    public String processEventForm(@ModelAttribute EventFormDTO eventFormDTO, HttpServletRequest request){
+//
+//        Event newEvent = new Event(eventFormDTO.getEventName(), eventFormDTO.getEventLocation(), eventFormDTO.getEventDate());
+//        eventRepository.save(newEvent);
+//
+//        return "Event " + newEvent.getEventName() + " successfully created!";
+
+    @PostMapping("/event")
+    @CrossOrigin
     @ResponseBody
-    public String processEventForm(@ModelAttribute EventFormDTO eventFormDTO, HttpServletRequest request){
+    public ResponseEntity<Object> processCreateEventForm(@RequestBody EventFormDTO eventFormDTO, HttpServletRequest request) {
 
         Event newEvent = new Event(eventFormDTO.getEventName(), eventFormDTO.getEventLocation(), eventFormDTO.getEventDate());
-        eventRepository.save(newEvent);
+        Event savedEvent= eventRepository.save(newEvent);
 
-        return "Event " + newEvent.getEventName() + " successfully created!";
+
+        return ResponseEntity.ok(savedEvent);
     }
-
 
     @GetMapping("/events")
     @ResponseBody
-    public String displayAllEvents(Model model) {
-        model.addAttribute("title", "All Events");
-        model.addAttribute("events", eventRepository.findAll());
-        ArrayList<Event> events = (ArrayList<Event>) eventRepository.findAll();
-        return "<html>" +
-                "<body>" +
-                "<h1> All Events </h1>" +
-                events +
-                "</body>" +
-                "</html>"
-                ;
+    public ResponseEntity<Object> displayAllEvents( HttpServletRequest request) {
+        List<Event> events =  eventRepository.findAll();
+        return ResponseEntity.ok(events);
     }
 
 //    @GetMapping("create")
