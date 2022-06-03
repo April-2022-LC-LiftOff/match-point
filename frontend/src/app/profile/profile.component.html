@@ -1,34 +1,11 @@
-<div class="row">
-    <div class="column">
-        <h3>Welcome {{user}}!</h3>
-        <p class="tab"> From this page you can create your very own game library so you never forget what games you have! 
+<h2>{{title}}</h2>
 
-            You can also create a game event with selections from your game library so all your friends can join in on the fun! You can also “JOIN” other user’s already created events!
-            
-            </p>
-    </div>
-    <div class="column">
-        <h3>Personal Game Library</h3>
-            <!-- <ol *ngFor="let game of UserGames">
-                <li>{{game.game_name}}</li>
-            </ol> -->
-            <div class="button-wrapper">
-                 <button class="button rounded-corners">ADD</button>
-                <button class="button rounded-corners">EDIT</button>
-                <button class="button rounded-corners">DELETE</button>
-            </div>
-    </div>        
-    <div class="column">
-        <h3>Your Events</h3>
-            <!-- <ol *ngFor="let event of UserEvents">
-                <li>{{event.event_name}}</li>
-            </ol> -->
-            <div class="button-wrapper">
-                <button class="button rounded-corners">CREATE</button>
-               <button class="button rounded-corners">EDIT</button>
-               <button class="button rounded-corners">J</button>
-               <button class="button rounded-corners">DELETE</button>
-           </div>
-    </div>
-    <div class="column"></div>
-  </div>
+<div class="container col-s-4">
+    <ul>
+        <li>Username: {{userInSession.username}}</li>
+        <li>Email: {{userInSession.email}}</li>
+        <li>Roles: {{userInSession.roles}}</li>
+    </ul>
+</div>
+
+<button class="btn btn-danger" (click)="logout()">Logout</button>

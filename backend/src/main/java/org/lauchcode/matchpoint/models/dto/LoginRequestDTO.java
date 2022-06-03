@@ -1,9 +1,13 @@
 package org.lauchcode.matchpoint.models.dto;
 
-public class LoginFormDTO {
+import javax.validation.constraints.NotBlank;
 
+public class LoginRequestDTO {
+
+    @NotBlank
     private String username;
 
+    @NotBlank
     private String password;
 
     public String getUsername() {
