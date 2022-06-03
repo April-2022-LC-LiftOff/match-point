@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="995e447a-5c59-4d81-8302-28e28446d730" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/controllers/EventController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/controllers/EventController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/dto/EventFormDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/org/lauchcode/matchpoint/models/dto/EventFormDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

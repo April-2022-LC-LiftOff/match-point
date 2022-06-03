@@ -5,11 +5,14 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -30,11 +33,22 @@ public class Event {
     @NotNull
     private String eventDate;
 
+    @NotNull
+    private boolean eventCreator;
 
-    public Event(String eventName, String eventLocation, String eventDate) {
+    @ManyToMany
+    private List<User> user;
+
+    @ManyToMany
+    private List<Game> games;
+
+    public Event(String eventName, String eventLocation, String eventDate, boolean eventCreator, List<User> user, List<Game> games) {
         this.eventName = eventName;
         this.eventLocation = eventLocation;
         this.eventDate = eventDate;
+        this.eventCreator = eventCreator;
+        this.user = user;
+        this.games = games;
     }
 
     public Event() {}
@@ -65,6 +79,30 @@ public class Event {
 
     public void setEventDate(String eventDate) {
         this.eventDate = eventDate;
+    }
+
+    public boolean isEventCreator() {
+        return eventCreator;
+    }
+
+    public void setEventCreator(boolean eventCreator) {
+        this.eventCreator = eventCreator;
+    }
+
+    public List<User> getUser() {
+        return user;
+    }
+
+    public void setUser(List<User> user) {
+        this.user = user;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
     }
 
     @Override

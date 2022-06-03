@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -24,6 +25,10 @@ public class User {
 
     @ManyToMany
     private List<Game> games;
+
+    @ManyToMany(mappedBy = "user")
+    private List<Event> event = new ArrayList<>();
+
 
     public User(){}
 

@@ -39,6 +39,21 @@ public class Game {
     @ManyToMany(mappedBy = "games")
     private List<User> user = new ArrayList<>();
 
+    @ManyToMany(mappedBy = "games")
+    private List<Event> event = new ArrayList<>();
+
+    public Game(String externalGameId, String gameName, String description, int minPlayers, int maxPlayers, int minPlaytime, int maxPlaytime, List<User> user, List<Event> event) {
+        this.externalGameId = externalGameId;
+        this.gameName = gameName;
+        this.description = description;
+        this.minPlayers = minPlayers;
+        this.maxPlayers = maxPlayers;
+        this.minPlaytime = minPlaytime;
+        this.maxPlaytime = maxPlaytime;
+        this.user = user;
+        this.event = event;
+    }
+
     public Game(){};
 
     public int getGameId() {

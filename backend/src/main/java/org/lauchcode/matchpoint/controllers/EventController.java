@@ -44,7 +44,7 @@ public class EventController {
     @ResponseBody
     public String processEventForm(@ModelAttribute EventFormDTO eventFormDTO, HttpServletRequest request){
 
-        Event newEvent = new Event(eventFormDTO.getEventName(), eventFormDTO.getEventLocation(), eventFormDTO.getEventDate());
+        Event newEvent = new Event(eventFormDTO.getEventName(), eventFormDTO.getEventLocation(), eventFormDTO.getEventDate(), eventFormDTO.isEventCreator(), eventFormDTO.getUser(), eventFormDTO.getGames());
         eventRepository.save(newEvent);
 
         return "Event " + newEvent.getEventName() + " successfully created!";
