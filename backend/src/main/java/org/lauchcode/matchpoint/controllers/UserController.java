@@ -18,14 +18,24 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping("/public")
-    public String publicTest(){
-        return "private content";
-    }
+//    @GetMapping("/public")
+//    public String publicTest(){
+//        return "private content";
+//    }
+//
+//    @GetMapping("/private")
+//    public String privateTest(){
+//        return "private content";
+//    }
 
-    @GetMapping("/private")
-    public String privateTest(){
-        return "private content";
+    // TODO: Confirm username nor email already exist before updating
+    @PutMapping("/{userId}")
+    public ResponseEntity<?> updateUser(@PathVariable int userId, @RequestBody RegisterRequestDTO requestDTO){
+        User user = userRepository.getById(userId);
+        user.setUsername(requestDTO.getUsername());
+        user.setEmail(requestDTO.getEmail());
+        userRepository.save(user);
+        return new ResponseEntity<>("User successfully updated", HttpStatus.OK);
     }
 
     @DeleteMapping("/{userId}")
