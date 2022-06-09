@@ -25,16 +25,32 @@ export class EventsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    const eventsObservable= this.eventsService.getAllEvents();
+          eventsObservable.subscribe((eventData:Event[]) => {
+              this.events=eventData;
+     });
   }
+
+
+
+
+
+
 
   onClickSubmit(): void {
     this.eventsService.createEvent(this.event).subscribe(
       (savedEvent) => {
         console.log(`reminder saved: ${savedEvent}`);
         this.events.push(savedEvent);
-        this.route.navigate(["home"]);
+        this.route.navigate(["/events"]);
       },
     );
+    this.event= {
+      id: 0,
+      eventName: "",
+      eventLocation: "",
+      eventDate: ""
+    };
   }
 
 }

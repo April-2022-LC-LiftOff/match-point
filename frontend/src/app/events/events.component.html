@@ -47,3 +47,25 @@
       </div>
     </form>
 </div>
+
+
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Location</th>
+            <th>Date</th>
+          </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let event of events" >
+          <td>{{ event.eventName }}</td>
+          <td>{{ event.eventLocation }}</td>
+          <td>{{ event.eventDate }}</td>
+        
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
