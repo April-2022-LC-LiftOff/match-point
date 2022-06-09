@@ -36,8 +36,11 @@ public class EventController {
         return ResponseEntity.ok(savedEvent);
     }
 
+
+    //I changed this from /events to /event? Not sure if that matters
     @GetMapping("/events")
     @ResponseBody
+    @CrossOrigin
     public ResponseEntity<Object> displayAllEvents( HttpServletRequest request) {
         List<Event> events =  eventRepository.findAll();
         return ResponseEntity.ok(events);
