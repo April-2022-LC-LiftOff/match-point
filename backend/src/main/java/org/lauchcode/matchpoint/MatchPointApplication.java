@@ -9,5 +9,4 @@ public class MatchPointApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MatchPointApplication.class, args);
 	}
-
 }

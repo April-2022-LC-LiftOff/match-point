@@ -1,6 +1,12 @@
+/* <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> */
+
 img {
-    max-width: 50%;
+    /* max-width: 50%; */
     height: auto;
+}
+
+.bannerImage.img{
+    width: 100%
 }
 
 #landing {

@@ -1,0 +1,11 @@
+<h2>{{title}}</h2>
+
+<div class="container col-s-4">
+    <ul>
+        <li>Username: {{userInSession.username}}</li>
+        <li>Email: {{userInSession.email}}</li>
+        <li>Roles: {{userInSession.roles}}</li>
+    </ul>
+</div>
+
+<button class="btn btn-danger" (click)="logout()">Logout</button>

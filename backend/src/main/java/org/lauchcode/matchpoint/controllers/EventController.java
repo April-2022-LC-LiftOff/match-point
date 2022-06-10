@@ -1,22 +1,15 @@
 package org.lauchcode.matchpoint.controllers;
 
 import org.lauchcode.matchpoint.models.Event;
-import org.lauchcode.matchpoint.models.User;
 import org.lauchcode.matchpoint.models.data.EventRepository;
 import org.lauchcode.matchpoint.models.dto.EventFormDTO;
-import org.lauchcode.matchpoint.models.dto.LoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 //@RequestMapping("events")

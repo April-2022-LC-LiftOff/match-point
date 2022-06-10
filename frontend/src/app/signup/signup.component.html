@@ -1,10 +1,14 @@
 <h2>{{title}}</h2>
 <div class="card shadow container d-flex flex-column p-3 col-sm-6">
   <form #signupForm="ngForm" (ngSubmit)="registerUser()">
-    {{ model | json }}
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" class="form-control" id="email" required [(ngModel)]="model.email" name="email">
     </div>
 
     <div class="form-group mb-3">
@@ -13,6 +17,9 @@
     </div>
 
     <button class="btn" type="submit" class="btn btn-success">Submit</button>
-
+    <p>Already a user? <a routerLink="/login">Log in here</a></p>
+    <div *ngIf="errMsg">
+      <p>{{errMsg}}</p>
+    </div>
   </form>
 </div>

@@ -2,9 +2,10 @@ package org.lauchcode.matchpoint.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.management.relation.Role;
 import javax.persistence.*;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Objects;
 
 @Entity
 public class User {
@@ -93,13 +94,8 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", games=" + games +
-                ", event=" + event +
-                ", roles=" + roles +
+                "username='" + username + '\'' +
+                ", passwordHash='" + password + '\'' +
                 '}';
     }
 }

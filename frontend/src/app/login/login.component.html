@@ -1,0 +1,20 @@
+<h2>{{title}}</h2>
+<div class="card shadow container d-flex flex-column p-3 col-sm-6">
+  <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username">
+    </div>
+
+    <div class="form-group mb-3">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="model.password" name="password">
+    </div>
+
+    <button class="btn" type="submit" class="btn btn-success">Submit</button>
+    <p>New user? <a routerLink="/signup">Sign up here</a></p>
+    <div *ngIf="errMsg">
+      <p>{{errMsg}}</p>
+    </div>
+  </form>
+</div>
