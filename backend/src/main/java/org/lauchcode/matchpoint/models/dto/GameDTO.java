@@ -10,9 +10,6 @@ public class GameDTO {
     private String gameName;
 
     @NotNull
-    private String description;
-
-    @NotNull
     private int minPlayers;
 
     @NotNull
@@ -38,14 +35,6 @@ public class GameDTO {
 
     public void setGameName(String gameName) {
         this.gameName = gameName;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public int getMinPlayers() {

@@ -4,47 +4,49 @@ import internal from "assert";
 import { Observable } from "rxjs";
 import { Game } from "../game";
 import { User } from "../user";
+import { TokenService } from "./token.service";
 
 const API_URL = "http://localhost:8080/api/games/";
-const httpOptions = {
-  headers: new HttpHeaders({
+const baseHeaders = {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "http://localhost:4200",
-  }),
-};
+}
 
 @Injectable({
   providedIn: "root",
 })
 
 export class GameService {
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private token: TokenService) {
       // this.http.get('api').subscribe(
       //   data => this.library = data;
       // )
     }
 
-    addToLibrary( user: User, game: Game): Observable<any> {
+    loadUserGames() : Observable<Game[]> {
+      return this.http.get<Game[]>(
+        API_URL + "games",
+        {
+          headers:
+          {
+            ...baseHeaders,
+            "Authorization": `Bearer ${this.token.getToken()}`
+          }
+        }
+      );
+    }
+
+    addToLibrary(game: Game): Observable<any> {
         return this.http.post(
             API_URL + "games",
+              game, 
             {
-              user,
-              game,
-            },  
-            httpOptions
+              headers:
+              {
+                ...baseHeaders,
+                "Authorization": `Bearer ${this.token.getToken()}`
+              }
+            }
           );
         }
-    
-    //TODO: check if in library
-    public isInLibrary(): any {
-      const library = '';
-      let game = {} as any;
-      if(library.includes(game.externalGameId)) {
-          return true;
-      } else {
-        return false;
-      }
-    }    
-
-
     }

@@ -68,6 +68,22 @@ public class User {
         this.password = password;
     }
 
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+
+    public List<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(List<Event> event) {
+        this.event = event;
+    }
+
     public Collection<Role> getRoles() {
         return roles;
     }

@@ -22,9 +22,6 @@ import java.util.List;
         private String gameName;
 
         @NotNull
-        private String description;
-
-        @NotNull
         private int minPlayers;
 
         @NotNull
@@ -42,10 +39,9 @@ import java.util.List;
         @ManyToMany(mappedBy = "games")
         private List<Event> event = new ArrayList<>();
 
-        public Game(String externalGameId, String gameName, String description, int minPlayers, int maxPlayers, int minPlaytime, int maxPlaytime) {
+        public Game(String externalGameId, String gameName, int minPlayers, int maxPlayers, int minPlaytime, int maxPlaytime) {
             this.externalGameId = externalGameId;
             this.gameName = gameName;
-            this.description = description;
             this.minPlayers = minPlayers;
             this.maxPlayers = maxPlayers;
             this.minPlaytime = minPlaytime;
@@ -72,14 +68,6 @@ import java.util.List;
 
         public void setGameName(String gameName) {
             this.gameName = gameName;
-        }
-
-        public String getDescription() {
-            return description;
-        }
-
-        public void setDescription(String description) {
-            this.description = description;
         }
 
         public int getMinPlayers() {
