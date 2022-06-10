@@ -27,8 +27,9 @@
         <col style="width:8%">
         <col style="width:8%">
         <col style="width:8%">
-        <col style="width:8%">
+        <col *ngIf = "isLoggedIn" style="width:8%">
         <!-- ADD HEADERS  -->
+        <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -36,8 +37,10 @@
             <th>Max Players</th>
             <th>Min Playtime</th>
             <th>Max Playtime</th>
-            <th *ngIf = isLoggedIn()>Library</th>
+            <th *ngIf = "isLoggedIn">Library</th>
         </tr> 
+    </thead>
+    <tbody>
 
     <!-- <ng-container *ngFor="let game of Games"> -->
         <tr *ngFor="let game of Games">
@@ -48,11 +51,12 @@
             <td>{{game.max_players}}</td>
             <td>{{game.min_playtime}}</td>
             <td>{{game.max_playtime}}</td>
-            <ng-container >
+            <ng-container *ngIf = "isLoggedIn">
             <td><button type="button" [disabled]="isSaved" (click)="addToLibrary()">Add to Library</button></td> 
             </ng-container>    
         </ng-container>    
         </tr>
+    </tbody>
     <!-- </ng-container> -->
     </table> 
 </div>

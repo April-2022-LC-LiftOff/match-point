@@ -25,7 +25,7 @@ export class GamesComponent implements OnInit{
     private gameService: GameService, private tokenService: TokenService
   ){}
   
-  games: Game[] = [];
+  Games: Game[] = data;
 
   ngOnInit()  {
     this.isLoggedIn = this.tokenService.isLoggedIn();
