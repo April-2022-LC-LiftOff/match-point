@@ -49,4 +49,18 @@ export class GameService {
             }
           );
         }
+
+        deleteFromLibrary(game: Game): Observable<any> {
+          return this.http.post(
+              API_URL + "games/delete",
+                game, 
+              {
+                headers:
+                {
+                  ...baseHeaders,
+                  "Authorization": `Bearer ${this.token.getToken()}`
+                }
+              }
+            );
+          }
     }

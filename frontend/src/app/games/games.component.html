@@ -23,10 +23,11 @@
     <table class = "games" *ngIf="Games">
         <col style="width:20%">
 	    <col style="width:40%">
-	    <col style="width:8%">
-        <col style="width:8%">
-        <col style="width:8%">
-        <col style="width:8%">
+	    <col style="width:6%">
+        <col style="width:6%">
+        <col style="width:6%">
+        <col style="width:6%">
+        <col *ngIf = "isLoggedIn" style="width:8%">
         <col *ngIf = "isLoggedIn" style="width:8%">
         <!-- ADD HEADERS  -->
         <thead>
@@ -37,6 +38,7 @@
             <th>Max Players</th>
             <th>Min Playtime</th>
             <th>Max Playtime</th>
+            <th *ngIf = "isLoggedIn">Library</th>
             <th *ngIf = "isLoggedIn">Library</th>
         </tr> 
     </thead>
@@ -52,7 +54,9 @@
             <td>{{game.minPlaytime}}</td>
             <td>{{game.maxPlaytime}}</td>
             <ng-container *ngIf = "isLoggedIn">
-            <td><button type="button" [disabled]="isSaved(game)" (click)="addToLibrary(game)">Add to Library</button></td> 
+            <!-- <td><button type="button" (click)="toggleEvent(game)"> {{{libraryAction}} </button></td> -->
+            <td><button type="button" [disabled]="isSaved(game)" (click)="addToLibrary(game)">Add to Library</button></td>
+            <td><button type="button" [disabled]="!isSaved(game)" (click)="deleteFromLibrary(game)">Delete from Library</button></td> 
             </ng-container>    
         </ng-container>    
         </tr>

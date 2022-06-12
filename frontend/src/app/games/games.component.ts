@@ -5,6 +5,7 @@ import { TokenService } from '../_services/token.service';
 import { GameService } from '../_services/game.service';
 const URL= "http://localhost:4200"
 
+//PARSING THE JSON TO CREATE JSON WITH ONLY NEEDED KEY-VALUEPAIRS
 const parsedGames: Game[] = data.map(valueInJson => ({
   externalGameId: valueInJson.id,
   gameName: valueInJson.name,
@@ -29,9 +30,10 @@ export class GamesComponent implements OnInit{
   userInSession = this.tokenService.getUser();
   isInLibrary: boolean = false;
   isLoggedIn?: boolean;
+  libraryAction: string = "Add to Library"
 
   // selectedGame? : Game;
-  usersGames: Game[] = [];
+  userGames: Game[] = [];
 
   constructor(
     private gameService: GameService, private tokenService: TokenService
@@ -42,12 +44,12 @@ export class GamesComponent implements OnInit{
   ngOnInit()  {
     this.isLoggedIn = this.tokenService.isLoggedIn();
     this.gameService.loadUserGames().subscribe(resp => {
-      this.usersGames = resp;
+      this.userGames = resp;
     });
   }
 
   isSaved(game: Game) { 
-    for(let usersGame of this.usersGames) {
+    for(let usersGame of this.userGames) {
       if(usersGame.externalGameId === game.externalGameId) {
         return true;
       }
@@ -55,10 +57,31 @@ export class GamesComponent implements OnInit{
     return false;    
   }
 
+// toggleEvent(game) {
+//    if(!this.isSaved(game)) {
+//        this.addToLibrary(game);
+//        this.libraryAction = "Delete from Library";
+//        this.isInLibrary = true;
+//    } else {
+//       this.deleteFromLibrary(game);
+//       this.libraryAction = "Add to Library";
+//       this.isInLibrary = false;
+//    }
+// }
+
   addToLibrary(game) {
     this.gameService.addToLibrary(game).subscribe(resp => {
       console.log("Game added to library");
-      this.usersGames.push(game);
+      this.userGames.push(game);
+      console.log(this.userGames);
+    });
+  }
+
+  deleteFromLibrary(game){
+    this.gameService.deleteFromLibrary(game).subscribe(resp => {     
+      this.userGames = this.userGames.filter((userGame) => userGame.gameName !== game.gameName);
+      console.log(this.userGames);
+      console.log("Game removed from library");
     });
   }
 }
