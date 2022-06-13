@@ -23,11 +23,10 @@
     <table class = "games" *ngIf="Games">
         <col style="width:20%">
 	    <col style="width:40%">
-	    <col style="width:6%">
-        <col style="width:6%">
-        <col style="width:6%">
-        <col style="width:6%">
-        <col *ngIf = "isLoggedIn" style="width:8%">
+	    <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
+        <col style="width:8%">
         <col *ngIf = "isLoggedIn" style="width:8%">
         <!-- ADD HEADERS  -->
         <thead>
@@ -39,12 +38,10 @@
             <th>Min Playtime</th>
             <th>Max Playtime</th>
             <th *ngIf = "isLoggedIn">Library</th>
-            <th *ngIf = "isLoggedIn">Library</th>
         </tr> 
     </thead>
     <tbody>
 
-    <!-- <ng-container *ngFor="let game of Games"> -->
         <tr *ngFor="let game of Games">
         <ng-container *ngIf="game.minPlayers >= minPlayers.value && game.maxPlayers <= maxPlayers.value && game.minPlaytime >= minPlaytime.value && game.maxPlaytime <= maxPlaytime.value">
             <td> <img class = "contain" src = "{{game.gameImage}}" width = "200" height="200"> <p>{{game.gameName}}</p></td>
@@ -54,13 +51,15 @@
             <td>{{game.minPlaytime}}</td>
             <td>{{game.maxPlaytime}}</td>
             <ng-container *ngIf = "isLoggedIn">
-            <!-- <td><button type="button" (click)="toggleEvent(game)"> {{{libraryAction}} </button></td> -->
-            <td><button type="button" [disabled]="isSaved(game)" (click)="addToLibrary(game)">Add to Library</button></td>
-            <td><button type="button" [disabled]="!isSaved(game)" (click)="deleteFromLibrary(game)">Delete from Library</button></td> 
+            <td><button type="button" (click)="toggleEvent(game)"> {{isSaved(game) ? "Delete from Library" : "Add to Library"}} </button></td>
+            </ng-container>
+            <!-- <td><button type="button" *ngIf = "isSaved(game); else deleteFromLibrary" (click)="addToLibrary(game)">Add to Library</button></td> -->
             </ng-container>    
-        </ng-container>    
         </tr>
     </tbody>
-    <!-- </ng-container> -->
     </table> 
 </div>
+
+<!-- <ng-template #deleteFromLibrary>
+    <td><button type="button" (click)="deleteFromLibrary(game)">Delete from Library</button></td>
+ </ng-template> -->

@@ -30,7 +30,7 @@ export class GamesComponent implements OnInit{
   userInSession = this.tokenService.getUser();
   isInLibrary: boolean = false;
   isLoggedIn?: boolean;
-  libraryAction: string = "Add to Library"
+  libraryAction: string;
 
   // selectedGame? : Game;
   userGames: Game[] = [];
@@ -49,29 +49,28 @@ export class GamesComponent implements OnInit{
   }
 
   isSaved(game: Game) { 
-    for(let usersGame of this.userGames) {
-      if(usersGame.externalGameId === game.externalGameId) {
+    for(let userGame of this.userGames) {
+      if(userGame.externalGameId === game.externalGameId) {
         return true;
       }
     }
     return false;    
   }
 
-// toggleEvent(game) {
-//    if(!this.isSaved(game)) {
-//        this.addToLibrary(game);
-//        this.libraryAction = "Delete from Library";
-//        this.isInLibrary = true;
-//    } else {
-//       this.deleteFromLibrary(game);
-//       this.libraryAction = "Add to Library";
-//       this.isInLibrary = false;
-//    }
-// }
+toggleEvent(game) {
+   if(!this.isSaved(game)) {
+       this.addToLibrary(game);
+       this.isInLibrary = true;
+   } else {
+      this.deleteFromLibrary(game);
+      this.isInLibrary = false;
+   }
+}
 
   addToLibrary(game) {
     this.gameService.addToLibrary(game).subscribe(resp => {
       console.log("Game added to library");
+      this.libraryAction = "Delete from Library";
       this.userGames.push(game);
       console.log(this.userGames);
     });
@@ -82,6 +81,7 @@ export class GamesComponent implements OnInit{
       this.userGames = this.userGames.filter((userGame) => userGame.gameName !== game.gameName);
       console.log(this.userGames);
       console.log("Game removed from library");
+      this.libraryAction = "Add to Library";
     });
   }
 }
