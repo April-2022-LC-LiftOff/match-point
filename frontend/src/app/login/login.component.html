@@ -1,6 +1,6 @@
 <h2>{{title}}</h2>
 <div class="card shadow container d-flex flex-column p-3 col-sm-6">
-  <form #signupForm="ngForm" (ngSubmit)="onSubmit()">
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" class="form-control" id="username" required [(ngModel)]="model.username" name="username">
