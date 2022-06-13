@@ -17,6 +17,7 @@ import java.util.Objects;
 @Entity
 public class Event {
 
+    //add uuid posiblity
     @Id
     @GeneratedValue
     private int id;
