@@ -1,3 +1,6 @@
+
+
+
 <h2>{{title}}</h2>
 
 <div class="container col-s-4">
@@ -6,6 +9,18 @@
         <li>Email: {{userInSession.email}}</li>
         <li>Roles: {{userInSession.roles}}</li>
     </ul>
+</div>
+<div class="container row col-s-6">
+    <h3>Library</h3>
+    <!-- <ul *ngFor="let game of userGames">
+        <li>{{game.gameName}}</li>
+    </ul> -->
+    <div *ngFor="let game of userGames" class="card" style="width:200px">
+        <!-- <img class="card-img-top" src="{{game.gameImage}}" alt="Game thumbnail"> -->
+        <div class="card-body">
+          <p class="card-text">{{game.gameName}}</p>
+        </div>
+      </div>
 </div>
 
 <button class="btn btn-danger" (click)="logout()">Logout</button>
