@@ -1,6 +1,6 @@
 <!-- add an authroizaton controler  -->
-
-<div class="container">
+<ng-container *ngIf="isLoggedIn">
+    <div class="container">
     <h1>Add A Event</h1>
     <form
       #form="ngForm"
@@ -49,7 +49,7 @@
       </div>
     </form>
 </div>
-
+</ng-container>
 
 <div class="container">
     <table class="table table-striped">
@@ -65,7 +65,7 @@
           <td>{{ event.eventName }}</td>
           <td>{{ event.eventLocation }}</td>
           <td>{{ event.eventDate }}</td>
-        
+          <td><button type="button" >Add</button></td>
         </tr>
       </tbody>
     </table>

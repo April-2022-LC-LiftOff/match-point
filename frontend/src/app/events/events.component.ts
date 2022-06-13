@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { EventsService } from "./events.service";
 import { Event } from "./event";
+import { TokenService } from "../_services/token.service";
 
 @Component({
   selector: "app-events",
@@ -15,13 +16,22 @@ export class EventsComponent implements OnInit {
     eventLocation: "",
     eventDate: "",
   };
-
+  isLoggedIn: boolean = false;
   events: Event[] = [];
 
-  constructor(private eventsService: EventsService, private route: Router) {}
+  constructor(private eventsService: EventsService, 
+              private route: Router,
+              private tokenService: TokenService) {}
 
   ngOnInit(): void {
+    this.isLoggedIn = this.tokenService.isLoggedIn();
     const eventsObservable = this.eventsService.getAllEvents();
+    eventsObservable.subscribe((eventData: Event[]) => {
+      this.events = eventData;
+      // console.log(this.events);
+    });
+
+    const Observable = this.eventsService.getAllEvents();
     eventsObservable.subscribe((eventData: Event[]) => {
       this.events = eventData;
       // console.log(this.events);
