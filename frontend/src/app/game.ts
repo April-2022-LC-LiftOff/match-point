@@ -3,8 +3,8 @@ export class Game {
     gameName: string; 
     gameImage: string;
     description: string; 
-    minPlayers: string; 
-    maxPlayers: string; 
-    minPlaytime: string; 
-    maxPlaytime: string
+    minPlayers: number; 
+    maxPlayers: number; 
+    minPlaytime: number; 
+    maxPlaytime: number
 }

@@ -17,7 +17,7 @@ const parsedGames: Game[] = data.map(valueInJson => ({
   maxPlaytime: valueInJson.max_playtime
 } as Game));
 
-console.log(parsedGames);
+// console.log(parsedGames);
 
 @Component({
   selector: 'app-games',
