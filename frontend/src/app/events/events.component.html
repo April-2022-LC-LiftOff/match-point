@@ -51,6 +51,7 @@
 </div>
 </ng-container>
 
+<ng-container>
 <div class="container">
     <table class="table table-striped">
       <thead>
@@ -65,9 +66,10 @@
           <td>{{ event.eventName }}</td>
           <td>{{ event.eventLocation }}</td>
           <td>{{ event.eventDate }}</td>
-          <td><button type="button" >Add</button></td>
+          <td *ngIf="isLoggedIn"><button type="button" >Join</button></td>
         </tr>
       </tbody>
     </table>
   </div>
+</ng-container>
 

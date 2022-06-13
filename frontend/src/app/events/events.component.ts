@@ -31,11 +31,11 @@ export class EventsComponent implements OnInit {
       // console.log(this.events);
     });
 
-    const Observable = this.eventsService.getAllEvents();
-    eventsObservable.subscribe((eventData: Event[]) => {
-      this.events = eventData;
-      // console.log(this.events);
-    });
+    // const Observable = this.eventsService.getAllEvents();
+    // eventsObservable.subscribe((eventData: Event[]) => {
+    //   this.events = eventData;
+    //   // console.log(this.events);
+    // });
   }
 
   onClickSubmit(): void {
