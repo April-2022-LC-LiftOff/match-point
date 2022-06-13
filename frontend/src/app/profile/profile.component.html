@@ -4,11 +4,20 @@
 <h2>{{title}}</h2>
 
 <div class="container col-s-4">
-    <ul>
-        <li>Username: {{userInSession.username}}</li>
-        <li>Email: {{userInSession.email}}</li>
-        <li>Roles: {{userInSession.roles}}</li>
+    <ul *ngIf="!isEditing">
+        <li >Username: {{userInSession.username}}</li>
+        <li >Email: {{userInSession.email}}</li>
+        <li >Roles: {{userInSession.roles}}</li>
     </ul>
+    <form *ngIf="isEditing" #editFrom="ngForm" (ngSubmit)="onEditSubmit()">
+        <ul>
+            <li >Username: <input type="text" name="username" [(ngModel)]="userInSession.username" ></li>
+            <li >Email: <input type="text" name="email" [(ngModel)]="userInSession.email"></li>
+            <li >Roles: {{userInSession.roles}}</li>
+        </ul>
+        <button class="btn" class="btn btn-danger" (click)="editAccount()" >Cancel Edits</button>
+        <button class="btn" type="submit" class="btn btn-success">Submit Edits</button>
+    </form>
 </div>
 <div class="container row col-s-6">
     <h3>Library</h3>
@@ -23,4 +32,6 @@
       </div>
 </div>
 
-<button class="btn btn-danger" (click)="logout()">Logout</button>
+<button class="btn btn-secondary" (click)="editAccount()">Edit Profile</button>
+<button class="btn btn-dark" (click)="logout()">Logout</button>
+<button class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
