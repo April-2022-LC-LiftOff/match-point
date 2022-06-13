@@ -3,9 +3,7 @@ package org.lauchcode.matchpoint.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 public class User {
@@ -21,6 +19,12 @@ public class User {
     private String password;
 
 //    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
+    @ManyToMany
+    private List<Game> games;
+
+    @ManyToMany(mappedBy = "user")
+    private List<Event> event = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.LAZY)
     private Collection<Role> roles = new HashSet<>();
@@ -62,6 +66,22 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Game> getGames() {
+        return games;
+    }
+
+    public void setGames(List<Game> games) {
+        this.games = games;
+    }
+
+    public List<Event> getEvent() {
+        return event;
+    }
+
+    public void setEvent(List<Event> event) {
+        this.event = event;
     }
 
     public Collection<Role> getRoles() {
