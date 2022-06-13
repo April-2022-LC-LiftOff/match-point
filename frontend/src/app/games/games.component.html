@@ -7,13 +7,13 @@
 
     <table class="filter"> 
         <tr class="filter">
-            <td><label for="min_players">Minimum Players:</label></td>
+            <td><label for="minPlayers">Minimum Players:</label></td>
             <td><input #minPlayers (click)='true' type="number" min = "1" value="1" class="input"/></td>
-            <td><label for="max_players">Maximum Players:</label></td> 
+            <td><label for="maxPlayers">Maximum Players:</label></td> 
             <td><input #maxPlayers (click)='true' type="number" min="1" value="8" class="input"/></td>
-            <td><label for="min_playtime">Minimum Playtime:</label></td>
+            <td><label for="minPlaytime">Minimum Playtime:</label></td>
             <td><input #minPlaytime (click)='true' type="number" min = "5" value="15" class="input" step="5"/></td>
-            <td><label for="max_playtime">Maximum Playtime:</label></td>
+            <td><label for="maxPlaytime">Maximum Playtime:</label></td>
             <td><input #maxPlaytime (click)='true' type="number" min = "5" value="180" class="input" step="5"/></td>
         </tr> 
     </table>
@@ -27,8 +27,9 @@
         <col style="width:8%">
         <col style="width:8%">
         <col style="width:8%">
-        <col style="width:8%">
+        <col *ngIf = "isLoggedIn" style="width:8%">
         <!-- ADD HEADERS  -->
+        <thead>
         <tr>
             <th>Name</th>
             <th>Description</th>
@@ -36,23 +37,29 @@
             <th>Max Players</th>
             <th>Min Playtime</th>
             <th>Max Playtime</th>
-            <th>Library</th>
+            <th *ngIf = "isLoggedIn">Library</th>
         </tr> 
+    </thead>
+    <tbody>
 
-    <!-- <ng-container *ngFor="let game of Games"> -->
         <tr *ngFor="let game of Games">
-        <ng-container *ngIf="game.min_players >= minPlayers.value && game.max_players <= maxPlayers.value && game.min_playtime >= minPlaytime.value && game.max_playtime <= maxPlaytime.value">
-            <td> <img class = "contain" src = "{{game.images.small}}" width = "200" height="200"> <p>{{game.name}}</p></td>
-            <!-- <td>{{game.name}}</td> -->
-            <td>{{game.description_preview}}</td>
-            <td>{{game.min_players}}</td>
-            <td>{{game.max_players}}</td>
-            <!-- <td>{{game.game_genre}}</td> -->
-            <td>{{game.min_playtime}}</td>
-            <td>{{game.max_playtime}}</td>
-            <td><button type="button">Add to Library</button></td> 
-        </ng-container>    
+        <ng-container *ngIf="game.minPlayers >= minPlayers.value && game.maxPlayers <= maxPlayers.value && game.minPlaytime >= minPlaytime.value && game.maxPlaytime <= maxPlaytime.value">
+            <td> <img class = "contain" src = "{{game.gameImage}}" width = "200" height="200"> <p>{{game.gameName}}</p></td>
+            <td>{{game.description}}</td>
+            <td>{{game.minPlayers}}</td>
+            <td>{{game.maxPlayers}}</td>
+            <td>{{game.minPlaytime}}</td>
+            <td>{{game.maxPlaytime}}</td>
+            <ng-container *ngIf = "isLoggedIn">
+            <td><button type="button" (click)="toggleEvent(game)"> {{isSaved(game) ? "Delete from Library" : "Add to Library"}} </button></td>
+            </ng-container>
+            <!-- <td><button type="button" *ngIf = "isSaved(game); else deleteFromLibrary" (click)="addToLibrary(game)">Add to Library</button></td> -->
+            </ng-container>    
         </tr>
-    <!-- </ng-container> -->
+    </tbody>
     </table> 
 </div>
+
+<!-- <ng-template #deleteFromLibrary>
+    <td><button type="button" (click)="deleteFromLibrary(game)">Delete from Library</button></td>
+ </ng-template> -->

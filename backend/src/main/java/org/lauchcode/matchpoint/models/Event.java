@@ -5,11 +5,13 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -31,6 +33,11 @@ public class Event {
     @NotNull
     private String eventDate;
 
+    @ManyToMany
+    private List<User> user;
+
+    @ManyToMany
+    private List<Game> games;
 
     public Event(String eventName, String eventLocation, String eventDate) {
         this.eventName = eventName;
